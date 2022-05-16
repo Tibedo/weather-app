@@ -1,34 +1,72 @@
 body {
+    background-image: url(bgmeteo.jpeg);
+    background-size: 200%;
     background-color: rgb(2, 2, 71);
+    
 }
 .dataMeteo {
     display: flex;
-    width: 100%;
+    width: 50%;
     flex-wrap: wrap;
     justify-content: center;
     margin: 0 auto;
-    margin-top: 50%;
+    margin-top: 50px;
+    
 }
-
+#askBox {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 10px;
+}
+.submit {
+    background-color: rgb(179, 179, 255);
+    margin-top: 10px;
+}
 .box {
-    width: 300px;
-    height: 300px;
-    opacity: 50%;
-    font-size: 50px;
+    width: 150px;
+    height: 150px;
+    opacity: 70%;
+    font-size: 30px;
     color: white;
     text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 #city {
     background-color: blue;
+    font-size: 20px;
 }
 #temp{
+    display: flex;
+    flex-direction: column;
     background-color: rgb(192, 192, 216);
 }
-#humidity {
+#clouds {
+
+    display: flex;
+    flex-direction: column;
     background-color: rgb(79, 79, 255);
+    font-size: 25px;
 }
 #wind {
+    
+    display: flex;
+    flex-direction: column;
     background-color: rgb(87, 149, 255);
 }
 
+img {
+    margin-bottom: 10px;
+    width: 20%;
+    height: 20%;
+}
+i {
+    width: 100%;
+    
+}
