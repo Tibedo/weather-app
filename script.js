@@ -42,7 +42,7 @@ dataMeteo.appendChild(wind)
 
 let apiCall = function (cityz) {
 
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityz}&appid=${APIKEY}&units=metric&lang=fr`;
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityz}&days=5&appid=${APIKEY}&units=metric&lang=fr`;
 
 fetch(url)
     .then(res => res.json())
