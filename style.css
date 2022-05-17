@@ -25,19 +25,18 @@
   }
 
 
-
-
 body {
-    background-image: url(bgmeteo.jpeg);
-    background-size: 200%;
+    background-image: url(bghard.jpeg);
+    background-size: 125%;
     background-color: rgb(2, 2, 71);
     font-family: poppins;
-    
+   
 }
 
 .dataMeteo {
     display: flex;
     width: 50%;
+    height: 50%;
     flex-wrap: wrap;
     justify-content: center;
     margin: 0 auto;
@@ -49,16 +48,26 @@ body {
     flex-direction: column;
     margin: 0 auto;
     padding: 10px;
+
+}
+
+.askCity {
+    width: 50%;
+    margin: 0 auto;
 }
 
 .submit {
-    background-color: rgb(179, 179, 255);
+    background-color: rgb(192, 222, 255);
+    margin: 0 auto;
     margin-top: 10px;
+    width: 40%;
+    border-radius: 50px;
+    
 }
 
 .box {
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
     opacity: 70%;
     font-size: 30px;
     color: white;
@@ -66,12 +75,15 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;   
+    align-items: center; 
+    box-shadow: 0 0 20px blue;  
+    border-radius: 5px;
+    padding: 5px;
 }
 
 #city {
     background-color: blue;
-    font-size: 20px;
+   
 }
 #temp{
     display: flex;
@@ -98,7 +110,7 @@ img {
     height: 20%;
 }
 .dates{
-    width: 100px;
+    width: 150px;
     height: 50px;
     background-color: blue;
     color: white;
@@ -122,4 +134,21 @@ img {
     background-color: yellow;
 }
 
+#cityOneInput {
+    margin-top: 150px;
+    
+}
 
+#cityTwoInput {
+    margin-top: 10px;
+    
+}
+
+#compareButton {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+button {
+    cursor: pointer;
+}

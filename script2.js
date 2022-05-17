@@ -89,17 +89,17 @@ fetch(url)
         document.querySelector("#nowDate").innerHTML = data.current.last_updated;        
     })
 
-    
-    let  imgUrl = `https://api.unsplash.com/search/photos?page=1&query=office`;
+
+
+     let  imgUrl = `https://api.unsplash.com/photos/random`; 
     
     fetch(imgUrl)
     .then(res => res.json())
     .then(data => {
         
         console.log(data);
-  
-
 })
+
     .catch(err => console.log('Erreur : ' + err));
 
 }
@@ -199,7 +199,7 @@ fetch(url)
 
          document.querySelector("#nowDate").innerHTML = data.forecast.forecastday[1].date;
 
-         
+    // ****** DAY THREE CALL ***** //     
          nextDay.addEventListener('click', function (e) {
             e.preventDefault();
             let citys = document.querySelector('.askCity').value;
@@ -227,9 +227,40 @@ nextDay.addEventListener('click', function (e) {
 
 
 
+// ********** COMPARE CITYS ********** //
+let cityOneInput = document.createElement("input") 
+let cityTwoInput = document.createElement("input") 
+let compareButton = document.createElement("button")
+
+cityOneInput.className = "cityInput"
+cityOneInput.placeholder = "Compare first city"
+cityOneInput.id = "cityOneInput"
+
+cityTwoInput.className = "cityInput"
+cityTwoInput.placeholder = "Compare second city"
+cityTwoInput.id = "cityTwoInput"
+
+compareButton.id = "compareButton"
+compareButton.innerHTML = "Compare"
+
+dates.appendChild(cityOneInput)
+dates.appendChild(cityTwoInput)
+dates.appendChild(compareButton)
 
 
+ function compared() {
 
+if (cityOneInput.value > cityTwoInput.value) {
+    alert(cityOneInput.value + " " + "is hotter than" + " " + cityTwoInput.value)
+}
+
+else {
+    alert(cityOneInput.value + " " + "is colder than" + " " + cityTwoInput.value)
+}
+
+}
+
+compareButton.addEventListener("click", compared)
  
 
 
