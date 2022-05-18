@@ -1,7 +1,6 @@
-// ***** CONSTANTES ****** //
+/* ******** CONSTANTES ******** */
 
 const APIKEY = "3a77b5b835af4f1fa7c141218221605";
-
 const UNSKEY = "nSvRS_iz4NQOOHHytg1OvgqvZZQYJArqtrZxklHOnkg"
 
 const askCity = document.querySelector(".askCity")
@@ -10,30 +9,26 @@ const submit = document.querySelector(".submit")
 const dataMeteo = document.querySelector(".dataMeteo")
 const dates = document.querySelector(".dates")
 
-
-
-// ******** CREATE ELEMENTS ******* //
-
-const city = document.createElement("div")
-city.id = "city"
-city.className = "box"
+/* ******** CREATE ELEMENTS ******* */
 
 const temp = document.createElement("div")
+const city = document.createElement("div")
+const clouds = document.createElement("div")
+const wind = document.createElement("div")
+const dateOfDay = document.createElement("div")
+
+city.id = "city"
+city.className = "box"
 
 temp.id = "temp"
 temp.className = "box"
 
-const clouds = document.createElement("div")
-
 clouds.id = "clouds"
 clouds.className = "box"
-
-const wind = document.createElement("div")
 
 wind.id = "wind"
 wind.className = "box"
 
-const dateOfDay = document.createElement("div")
 dateOfDay.id = "nowDate"
 
 dataMeteo.appendChild(city)
@@ -42,13 +37,10 @@ dataMeteo.appendChild(clouds)
 dataMeteo.appendChild(wind)
 dates.appendChild(dateOfDay)
 
+/* ******** CURRENT DAY CALL ********** */
 
-
-
-// ******** CURRENT DAY CALL ********** //
-
-let apiCall = function (cityz) {
-
+function currentDayCall(cityz) {
+   
     let url = `https://api.weatherapi.com/v1/forecast.json?key=${APIKEY}&q=${cityz}&days=5&units=metric&lang=fr`;
 
     fetch(url)
@@ -56,13 +48,14 @@ let apiCall = function (cityz) {
         .then(data => {
             const meteoList = data.res;
             console.log(data);
+            
 
             // ***** CITY ***** //       
             city.innerHTML = data.location.name;
 
             // ***** TEMP ***** //        
             document.querySelector("#temp").innerHTML =
-                "<img src='thermometre.png'>" + Math.trunc(data.current.temp_c) + "º";
+                "<img src='icons/thermometre.png'>" + Math.trunc(data.current.temp_c) + "º";
 
             // ***** SUN CLOUDS RAIN ***** //
             let sunny = document.querySelector("#clouds")
@@ -82,7 +75,7 @@ let apiCall = function (cityz) {
                 sunny.innerHTML = data.current.condition.text;
             }
             // ***** WIND ***** //
-            document.querySelector("#wind").innerHTML = "<img src='wind.png'>" +
+            document.querySelector("#wind").innerHTML = "<img src='icons/wind.png'>" +
                 data.current.wind_kph + 'km/h';
 
             // ***** DATE ***** //      
@@ -106,18 +99,16 @@ let apiCall = function (cityz) {
         .catch(err => console.log('Erreur : ' + err));
 
 }
-
-document.querySelector("form").addEventListener('submit', function (e) {
+   document.querySelector("form").addEventListener('submit', function (e) {
     e.preventDefault();
     let citys = document.querySelector('.askCity').value;
 
-    apiCall(citys)
+    currentDayCall(citys);
 })
-apiCall()
+currentDayCall()
 
 
-
-// ******** DAY 3 CALL ********** //
+/* ******** DAY 3 CALL ********** */
 
 function dayThreeCall(cityz) {
 
@@ -161,9 +152,7 @@ function dayThreeCall(cityz) {
 
 }
 
-
-
-// ********* DAY 2 CALL ********* //
+/* ********* DAY 2 CALL ********* */
 
 function dayTwoCall(cityz) {
 
@@ -216,21 +205,21 @@ function dayTwoCall(cityz) {
 }
 
 
-
-// ******* NEXT DAY BUTTON ******* //
-
-let nextDay = document.querySelector(".nextDay")
-
-nextDay.addEventListener('click', function (e) {
-    e.preventDefault();
-    let citys = document.querySelector('.askCity').value;
-
-    dayTwoCall(citys)
-})
+/* ******* NEXT DAY BUTTON ******* */
 
 
+
+    let nextDay = document.querySelector(".nextDay")
+    
+    nextDay.addEventListener('click', function (e) {
+        e.preventDefault();
+        let citys = document.querySelector('.askCity').value;
+    
+        dayTwoCall(citys)
+    })
 
 // ********** COMPARE CITYS ********** //
+
 let cityOneInput = document.createElement("input")
 let cityTwoInput = document.createElement("input")
 let compareButton = document.createElement("button")
@@ -250,19 +239,14 @@ dates.appendChild(cityOneInput)
 dates.appendChild(cityTwoInput)
 dates.appendChild(compareButton)
 
-
 function compared() {
-
     if (cityOneInput.value > cityTwoInput.value) {
         alert(cityOneInput.value + " " + "is hotter than" + " " + cityTwoInput.value)
     }
-
     else {
         alert(cityOneInput.value + " " + "is colder than" + " " + cityTwoInput.value)
     }
-
 }
-
 compareButton.addEventListener("click", compared)
 
 
