@@ -1,3 +1,5 @@
+import {APIKEY, UNSKEY, askCity, submit} from "./constantes.js"
+
 export function dayThreeCall(cityz) {
 
     let url = `https://api.weatherapi.com/v1/forecast.json?key=${APIKEY}&q=${cityz}&days=5&units=metric&lang=fr`;
@@ -11,7 +13,7 @@ export function dayThreeCall(cityz) {
             city.innerHTML = data.location.name;
 
             document.querySelector("#temp").innerHTML =
-                "<img src='thermometre.png'>" + Math.trunc(data.forecast.forecastday[2].day.avgtemp_c) + "º";
+                "<img src='icons/thermometre.png'>" + Math.trunc(data.forecast.forecastday[2].day.avgtemp_c) + "º";
 
             let sunny = document.querySelector("#clouds")
             if (data.forecast.forecastday[2].day.condition.text === "Partiellement nuageux") {
@@ -26,11 +28,17 @@ export function dayThreeCall(cityz) {
             else if (data.forecast.forecastday[2].day.condition.text === "Couvert") {
                 sunny.innerHTML = "<img src='./day/122.png'>" + data.forecast.forecastday[2].day.condition.text;
             }
+            else if (data.current.condition.text === "Pluie forte à modérée avec tonerre par endroit") {
+                sunny.innerHTML = "<img src='./day/200.png'>" + data.current.condition.text;
+            }
+            else if (data.current.condition.text === "Pluie éparse à proximité") {
+                sunny.innerHTML = "<img src='./day/176.png'>" + data.current.condition.text;
+            }
             else {
                 sunny.innerHTML = data.forecast.forecastday[2].condition.text;
             }
 
-            document.querySelector("#wind").innerHTML = "<img src='wind.png'>" +
+            document.querySelector("#wind").innerHTML = "<img src='icons/wind.png'>" +
                 data.forecast.forecastday[2].day.maxwind_kph + 'km/h';
 
             document.querySelector("#nowDate").innerHTML = data.forecast.forecastday[2].date;

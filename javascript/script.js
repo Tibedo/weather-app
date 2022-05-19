@@ -4,13 +4,12 @@
 
 /* ******** CREATE ELEMENTS ******* */
 
-// import {addElements} from "./createElements.js"
-// addElements()
+
 
 /* ******** CURRENT DAY CALL ********** */
 
-import {currentDayCall, selectValue} from "./CurrentDayCall.js"
-currentDayCall()
+import {currentDayCall} from "./CurrentDayCall.js"
+currentDayCall();
 
 /* ******** DAY 3 CALL ********** */
 
@@ -20,46 +19,55 @@ currentDayCall()
 /* ********* DAY 2 CALL ********* */
 
 import {dayTwoCall} from "./DayTwoCall.js"
-dayTwoCall()
-
+dayTwoCall();
 
 /* ******* NEXT DAY BUTTON ******* */
 
-import {nextDayButton} from "./NextDayButton.js"
-nextDayButton()
-
-
+import {nextDayButton} from "./NextDayButton.js";
+nextDayButton();
 
 // ********** COMPARE CITYS ********** //
 
-let cityOneInput = document.createElement("input")
-let cityTwoInput = document.createElement("input")
-let compareButton = document.createElement("button")
+import { compareCitys } from "./CompareCitys.js";
+compareCitys()
 
-cityOneInput.className = "cityInput"
-cityOneInput.placeholder = "Compare first city"
-cityOneInput.id = "cityOneInput"
 
-cityTwoInput.className = "cityInput"
-cityTwoInput.placeholder = "Compare second city"
-cityTwoInput.id = "cityTwoInput"
+// ********* LOCAL STORAGE ********** //
 
-compareButton.id = "compareButton"
-compareButton.innerHTML = "Compare"
+/*
+let meteObject = {
+    city: data.location.name,
+    temp: Math.trunc(data.current.temp_c),
+    sunny: data.current.condition.text,
+    wind: data.current.wind_kph,
+  }
 
-dates.appendChild(cityOneInput)
-dates.appendChild(cityTwoInput)
-dates.appendChild(compareButton)
+  let localStorage = JSON.parse(localStorage.getItem("weather"))
+  console.log(localStorage)
 
-function compared() {
-    if (cityOneInput.value > cityTwoInput.value) {
-        alert(cityOneInput.value + " " + "is hotter than" + " " + cityTwoInput.value)
-    }
-    else {
-        alert(cityOneInput.value + " " + "is colder than" + " " + cityTwoInput.value)
-    }
+  if (localStorage) {
+    localStorage.push(meteObject)
+    localStorage.setItem("weather", JSON.stringify(localStorage))
+    console.log(localStorage)
+  }
+  else {
+    localStorage = []
+    localStorage.push(meteObject)
+    localStorage.setItem("weather", JSON.stringify(localStorage))
+    console.log(localStorage) 
+  }
+*/
+
+
+/*
+const citiesJson = localStorage.getItem('cities');
+let cities = [];
+citiesJson.push(meteObject)
+if (citiesJson) {
+    cities = JSON.parse(citiesJson);
 }
-compareButton.addEventListener("click", compared)
 
-
-
+saveIntoStorage() {
+        localStorage.setItem('cities', JSON.stringify(this.cities));
+    }
+*/

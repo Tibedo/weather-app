@@ -1,3 +1,5 @@
+
+import {APIKEY, UNSKEY, askCity, submit} from "./constantes.js"
 import {dayThreeCall} from "./DayThreeCall.js"
 
 export function dayTwoCall(cityz) {
@@ -13,7 +15,7 @@ export function dayTwoCall(cityz) {
             city.innerHTML = data.location.name;
 
             document.querySelector("#temp").innerHTML =
-                "<img src='thermometre.png'>" + Math.trunc(data.forecast.forecastday[1].day.avgtemp_c) + "º";
+                "<img src='icons/thermometre.png'>" + Math.trunc(data.forecast.forecastday[1].day.avgtemp_c) + "º";
 
             let sunny = document.querySelector("#clouds")
             if (data.forecast.forecastday[1].day.condition.text === "Partiellement nuageux") {
@@ -28,16 +30,24 @@ export function dayTwoCall(cityz) {
             else if (data.forecast.forecastday[1].day.condition.text === "Couvert") {
                 sunny.innerHTML = "<img src='./day/122.png'>" + data.forecast.forecastday[1].day.condition.text;
             }
+            else if (data.current.condition.text === "Pluie forte à modérée avec tonerre par endroit") {
+                sunny.innerHTML = "<img src='./day/200.png'>" + data.current.condition.text;
+            }
+            else if (data.current.condition.text === "Pluie éparse à proximité") {
+                sunny.innerHTML = "<img src='./day/176.png'>" + data.current.condition.text;
+            }
             else {
-                sunny.innerHTML = data.forecast.forecastday[1].condition.text;
+                sunny.innerHTML = data.forecast.forecastday[1].day.condition.text;
             }
 
-            document.querySelector("#wind").innerHTML = "<img src='wind.png'>" +
+            document.querySelector("#wind").innerHTML = "<img src='icons/wind.png'>" +
                 data.forecast.forecastday[1].day.maxwind_kph + 'km/h';
 
             document.querySelector("#nowDate").innerHTML = data.forecast.forecastday[1].date;
 
-            // ****** DAY THREE CALL ***** //     
+            // ****** DAY THREE CALL ***** //   
+
+            let nextDay = document.querySelector(".nextDay")  
             nextDay.addEventListener('click', function (e) {
                 e.preventDefault();
                 let citys = document.querySelector('.askCity').value;
@@ -45,7 +55,7 @@ export function dayTwoCall(cityz) {
                 dayThreeCall(citys)
 
             })
-                .catch(err => console.log('Erreur : ' + err));
+               // .catch(err => console.log('Erreur : ' + err));
         })
 
 }

@@ -6,16 +6,16 @@ addElements()
 
 export function currentDayCall(cityz) {
    
-    let url = `https://api.weatherapi.com/v1/forecast.json?key=${APIKEY}&q=${cityz}&days=5&units=metric&lang=fr`;
+    let url = `https://api.weatherapi.com/v1/forecast.json?key=${APIKEY}&q=${cityz}&days=8&units=metric&lang=fr`;
 
     fetch(url)
         .then(res => res.json())
         .then(data => {
-            const meteoList = data.res;
+            //const meteoList = data.res;
             console.log(data);
             
+            // ***** CITY ***** // 
 
-            // ***** CITY ***** //       
             city.innerHTML = data.location.name;
 
             // ***** TEMP ***** //        
@@ -36,6 +36,12 @@ export function currentDayCall(cityz) {
             else if (data.current.condition.text === "Couvert") {
                 sunny.innerHTML = "<img src='./day/122.png'>" + data.current.condition.text;
             }
+            else if (data.current.condition.text === "Pluie forte à modérée avec tonerre par endroit") {
+                sunny.innerHTML = "<img src='./day/200.png'>" + data.current.condition.text;
+            }
+            else if (data.current.condition.text === "Pluie éparse à proximité") {
+                sunny.innerHTML = "<img src='./day/176.png'>" + data.current.condition.text;
+            }
             else {
                 sunny.innerHTML = data.current.condition.text;
             }
@@ -44,7 +50,7 @@ export function currentDayCall(cityz) {
                 data.current.wind_kph + 'km/h';
 
             // ***** DATE ***** //      
-            document.querySelector("#nowDate").innerHTML = data.current.last_updated;
+            document.querySelector("#nowDate").innerHTML = data.current.last_updated;          
         })
 
 
@@ -61,9 +67,9 @@ export function currentDayCall(cityz) {
 
             console.log(body)
         })
-        .catch(err => console.log('Erreur : ' + err));
-
+        .catch(err => console.log('Erreur : ' + err));      
 }
+
 export let selectValue = document.querySelector("form").addEventListener('submit', function (e) {
     e.preventDefault();
     let citys = document.querySelector('.askCity').value;
