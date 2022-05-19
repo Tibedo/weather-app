@@ -1,5 +1,5 @@
 {
-  "name": "Meteo-App",
+  "name": "METEO-APP",
   "source": "src/index.html",
   "scripts": {
     "start": "parcel",
