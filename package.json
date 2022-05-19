@@ -1,0 +1,14 @@
+{
+  "name": "Meteo-App",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "devDependencies": {
+    "parcel": "latest"
+  },
+  "dependencies": {
+    "chart.js": "^3.7.1"
+  }
+}
